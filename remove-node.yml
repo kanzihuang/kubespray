@@ -48,3 +48,15 @@
   roles:
     - { role: kubespray-defaults, when: reset_nodes|default(True)|bool }
     - { role: remove-node/post-remove, tags: post-remove }
+
+- name: Dummy extranet reset
+  hosts: "{{ node | default('kube_node') }}"
+  gather_facts: False
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  tasks:
+    - name: dummy extranet reset
+      include_role:
+        name: dummy-extranet
+        tasks_from: reset
+      tags: kubespray-extranet
+      when: reset_nodes|default(True)|bool

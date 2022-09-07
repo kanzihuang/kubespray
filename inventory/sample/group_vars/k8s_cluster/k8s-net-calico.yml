@@ -97,7 +97,7 @@ calico_cni_name: k8s-pod-network
 
 # set VXLAN port and VNI
 # calico_vxlan_vni: 4096
-# calico_vxlan_port: 4789
+calico_vxlan_port: 8472
 
 # Cenable eBPF mode
 # calico_bpf_enabled: false

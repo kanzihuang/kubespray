@@ -1,0 +1,13 @@
+---
+- name:  install service dummy extranet
+  template:
+    src: dummy-extranet.service.j2
+    dest: /etc/systemd/system/dummy-extranet.service
+    mode: 0644
+
+- name: enable service dummy extranet
+  systemd: 
+    name: dummy-extranet.service
+    daemon_reload: yes
+    enabled: yes
+    state: started

@@ -1,0 +1,12 @@
+---
+- name: Kubespray extranet install
+  hosts: k8s_cluster:etcd
+  gather_facts: False
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  environment: "{{ proxy_disable_env }}"
+  roles:
+    - { role: kubespray-defaults }
+    - { role: dummy-extranet, tags: "kubespray-extranet", when: dummy_extranet_enabled }    
+    - { role: "container-engine/docker", tags: "kubespray-extranet", when: [deploy_kubespray_file_server, deploy_container_engine] }
+    - { role: kubespray-file-server, tags: "kubespray-extranet", when: deploy_kubespray_file_server }
+
