@@ -1,0 +1,15 @@
+---
+- hosts: k8s_cluster:etcd
+  any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
+  gather_facts: true
+  environment: "{{ proxy_disable_env }}"
+  roles:
+    - { role: kubespray-defaults }
+  tasks:
+    - name: debug apiserver vars
+      debug:
+        msg:
+          - "kube_apiserver_access_address: {{ kube_apiserver_access_address }}"
+          - "first_kube_control_plane_address: {{ first_kube_control_plane_address }}"
+          - "loadbalancer_apiserver_localhost: {{ loadbalancer_apiserver_localhost }}"
+          - "kube_apiserver_endpoint: {{ kube_apiserver_endpoint }}"

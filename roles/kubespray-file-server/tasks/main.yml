@@ -12,7 +12,7 @@
   ignore_errors: true
 
 - name: deploy kubespray-file-server
-  command: "docker run -d --name kubespray-file-server -p {{ kubespray_file_server_port }}:80 {{ kubespray_file_server_image_repo }}:{{ kubespray_file_server_image_tag }}"
+  command: "docker run -d --name kubespray-file-server -p 127.0.0.1:{{ kubespray_file_server_port }}:80 {{ kubespray_file_server_image_repo }}:{{ kubespray_file_server_image_tag }}"
   when: not uri_result is success
 
 - name: wait for kubespray-file-server

@@ -28,6 +28,9 @@
       fail:
         msg: "Reset confirmation failed"
       when: reset_confirmation != "yes"
+    - name: "prevent 'Stop if ip var does not match local ips'"
+      set_fact: ansible_all_ipv4_addresses="{{ ansible_all_ipv4_addresses + [ access_ip ] }}"
+      when: dummy_extranet_enabled
 
   environment: "{{ proxy_disable_env }}"
   roles:

@@ -39,6 +39,10 @@
     - { role: dummy-extranet, tags: "kubespray-extranet", when: dummy_extranet_enabled }
     - { role: "container-engine/docker", tags: "kubespray-extranet", when: [deploy_kubespray_file_server, deploy_container_engine] }
     - { role: kubespray-file-server, tags: "kubespray-extranet", when: deploy_kubespray_file_server }
+  tasks:
+    - name: "prevent 'Stop if ip var does not match local ips'"
+      set_fact: ansible_all_ipv4_addresses="{{ ansible_all_ipv4_addresses + [ access_ip ] }}"
+      when: dummy_extranet_enabled
 
 - name: Download images to ansible host cache via first kube_control_plane node
   hosts: kube_control_plane[0]
