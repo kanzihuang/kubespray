@@ -3,8 +3,7 @@ set -eo pipefail
 
 CURRENT_DIR=$(cd $(dirname $0); pwd)
 TEMP_DIR="${CURRENT_DIR}/temp"
-INVENTORY_DIR="${CURRENT_DIR%/contrib/offline}"
-REPO_ROOT_DIR="${INVENTORY_DIR%/inventory}/kubespray"
+REPO_ROOT_DIR="${CURRENT_DIR%/contrib/offline}"
 REGISTRY_HOST="docker.io/kanzihuang"
 FILES_REPO="http://127.0.0.1:8080"
 
@@ -53,6 +52,6 @@ for i in $KUBE_IMAGES; do
 done
 
 # run ansible to expand templates
-/bin/cp ${CURRENT_DIR}/generate_list.yml ${INVENTORY_DIR}
+/bin/cp ${CURRENT_DIR}/generate_list.yml ${REPO_ROOT_DIR}
 
-(cd ${REPO_ROOT_DIR} && ansible-playbook $* "${INVENTORY_DIR}/generate_list.yml" && /bin/rm "${INVENTORY_DIR}/generate_list.yml") || exit 1
+(cd ${REPO_ROOT_DIR} && ansible-playbook $* generate_list.yml && /bin/rm generate_list.yml) || exit 1
