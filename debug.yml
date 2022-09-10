@@ -13,3 +13,11 @@
           - "first_kube_control_plane_address: {{ first_kube_control_plane_address }}"
           - "loadbalancer_apiserver_localhost: {{ loadbalancer_apiserver_localhost }}"
           - "kube_apiserver_endpoint: {{ kube_apiserver_endpoint }}"
+    - name: debug etcd vars
+      debug:
+        msg:
+          - "etcd_address: {{ etcd_address }}"
+          - "etcd_access_address: {{ etcd_access_address }}"
+          - "etcd_events_access_address: {{ etcd_events_access_address }}"
+          - "etcd_access_addresses: {{ etcd_access_addresses }}"
+          - "etcd_events_access_addresses_list: {{ etcd_events_access_addresses_list }}"

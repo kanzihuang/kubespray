@@ -38,7 +38,6 @@
   tasks:
     - name: "prevent 'Stop if ip var does not match local ips'"
       set_fact: ansible_all_ipv4_addresses="{{ ansible_all_ipv4_addresses + [ access_ip ] }}"
-      when: dummy_extranet_enabled
 
 - hosts: k8s_cluster:etcd
   gather_facts: False
