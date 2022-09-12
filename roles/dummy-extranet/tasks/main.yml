@@ -6,7 +6,7 @@
     mode: 0644
 
 - name: enable service dummy extranet
-  systemd: 
+  systemd:
     name: dummy-extranet.service
     daemon_reload: yes
     enabled: yes

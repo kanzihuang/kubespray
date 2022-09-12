@@ -6,7 +6,7 @@
   environment: "{{ proxy_disable_env }}"
   roles:
     - { role: kubespray-defaults }
-    - { role: dummy-extranet, tags: "kubespray-extranet", when: dummy_extranet_enabled }    
+    - { role: dummy-extranet, tags: "kubespray-extranet", when: dummy_extranet_enabled }
     - { role: "container-engine/docker", tags: "kubespray-extranet", when: [deploy_kubespray_file_server, deploy_container_engine] }
     - { role: kubespray-file-server, tags: "kubespray-extranet", when: deploy_kubespray_file_server }
 

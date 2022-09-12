@@ -330,5 +330,8 @@ auto_renew_certificates: false
 # First Monday of each month
 # auto_renew_certificates_systemd_calendar: "Mon *-*-1,2,3,4,5,6,7 03:{{ groups['kube_control_plane'].index(inventory_hostname) }}0:00"
 
-## bind address for kubelet. Set to 0.0.0.0 to listen on all interfaces
-kubelet_bind_address: "{{ fallback_ips[inventory_hostname] }}"
+# advertised host IP for kubelet. This affects network plugin config. Take caution
+kubelet_address: "{{ access_ip | default(ip | default(fallback_ips[inventory_hostname])) }}{{ (',' + (access_ip6 | default(ip6))) if enable_dual_stack_networks and (access_ip6 is defined or ip6 is defined) else '' }}"
+
+# Vars for pointing to kubernetes api endpoints
+kube_apiserver_address: "{{ access_ip | default(ip | default(fallback_ips[inventory_hostname])) }}"

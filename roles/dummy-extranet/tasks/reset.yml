@@ -8,7 +8,7 @@
   register: dummy_service
 
 - name: reset | disable service dummy nat
-  systemd: 
+  systemd:
     name: dummy-extranet
     enabled: no
     state: stopped

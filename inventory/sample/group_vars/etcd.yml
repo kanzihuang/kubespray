@@ -25,4 +25,7 @@
 # This affects ETCD_PEER_CLIENT_CERT_AUTH variable
 # etcd_peer_client_auth: true
 
+# Vars for pointing to etcd endpoints
 etcd_address: "{{ fallback_ips[inventory_hostname] }}"
+etcd_access_address: "{{ access_ip | default(etcd_address) }}"
+etcd_events_access_address: "{{ access_ip | default(etcd_address) }}"

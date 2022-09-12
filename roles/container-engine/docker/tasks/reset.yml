@@ -40,6 +40,7 @@
     - docker
     - docker.socket
     - containerd
+  ignore_errors: true
 
 - name: Docker | Remove dpkg hold
   dpkg_selections:
