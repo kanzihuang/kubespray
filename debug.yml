@@ -22,7 +22,7 @@
           - "etcd_events_access_address: {{ etcd_events_access_address }}"
           - "etcd_access_addresses: {{ etcd_access_addresses }}"
           - "etcd_events_access_addresses_list: {{ etcd_events_access_addresses_list }}"
-    - name: debug ansible_distribution_major_version
+    - name: debug ingress_nginx_webhook_enabled
       debug:
         msg:
-          - "ansible_distribution_major_version: {{ ansible_distribution_major_version }}"
+          - "ingress_nginx_webhook_enabled: {{ ingress_nginx_webhook_enabled }}"

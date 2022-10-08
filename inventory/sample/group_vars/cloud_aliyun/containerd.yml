@@ -1,5 +1,0 @@
----
-containerd_registries:
-  "docker.io":
-    - "https://mirrors.cloud.aliyuncs.com"
-    - "https://registry.docker-cn.com"
