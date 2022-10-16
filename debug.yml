@@ -22,7 +22,8 @@
           - "etcd_events_access_address: {{ etcd_events_access_address }}"
           - "etcd_access_addresses: {{ etcd_access_addresses }}"
           - "etcd_events_access_addresses_list: {{ etcd_events_access_addresses_list }}"
-    - name: debug ingress_nginx_webhook_enabled
+    - name: debug Domains
       debug:
         msg:
-          - "ingress_nginx_webhook_enabled: {{ ingress_nginx_webhook_enabled }}"
+          - "!remove_default_searchdomains: {{ remove_default_searchdomains is sameas false }}"
+          - "Domains: {{ ([ 'default.svc.' + dns_domain, 'svc.' + dns_domain ] + searchdomains|default([])) | join(' ') }}"

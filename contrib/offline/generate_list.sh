@@ -31,6 +31,7 @@ sed -n '/^downloads:/,/download_defaults:/p' ${REPO_ROOT_DIR}/${DOWNLOAD_YML} \
 echo "---" > ${TEMP_DIR}/image-repo.yml
 echo "registry_host: $REGISTRY_HOST" >> ${TEMP_DIR}/image-repo.yml
 echo 'kube_image_repo: "{{ registry_host }}"' >> ${TEMP_DIR}/image-repo.yml
+echo 'k8s_image_repo: "registry.k8s.io"' >> ${TEMP_DIR}/image-repo.yml
 expr=$(sed -n -e '/^downloads:/,/download_defaults:/{/^\s*repo:/p}' ${REPO_ROOT_DIR}/${DOWNLOAD_YML} \
     | sed -e 's@^\s*repo:@@; s@\W*@@g; s@^@/@; s@$@:/p;@;' \
     | sed -e ':BEGIN; N; y/\n/ /; bBEGIN' \
