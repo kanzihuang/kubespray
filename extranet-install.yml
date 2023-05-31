@@ -1,7 +1,7 @@
 ---
 - name: Kubespray extranet install
   hosts: k8s_cluster:etcd
-  gather_facts: False
+  gather_facts: true
   any_errors_fatal: "{{ any_errors_fatal | default(true) }}"
   environment: "{{ proxy_disable_env }}"
   roles:
